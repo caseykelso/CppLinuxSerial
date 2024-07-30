@@ -29,27 +29,20 @@ Library for communicating with COM ports on a Linux system.
 1. Create a new build directory and change into it:
 
 	```bash
-	$ mkdir build
+	$ mkdir build && mkdir install
 	$ cd build
 	```
 
-1. Run cmake on the parent directory to generate makefile:
-
-	```bash
-	$ cmake ..
-	```
-
-1. Run make on the generated makefile to generate the static library `libCppLinuxSerial.a` and an unit test executable:
-
-	```bash
-	$ make
-	```
-
-1. To install the headers on your system:
-
-	```bash
-	$ sudo make install
-	```
+# Build the Library
+```bash
+cmake .. -DCMAKE_PREFIX_PATH=$PWD/../install -DCMAKE_INSTALL_PREFIX=$PWD/../install
+make -j8 install
+```
+# Build the Example
+```bash
+cmake .. -DCMAKE_PREFIX_PATH=$PWD/../install -DCMAKE_INSTALL_PREFIX=$PWD/../install -DBUILD_EXAMPLE=1
+make -j8 install
+```
 
 1. To run the unit tests:
 

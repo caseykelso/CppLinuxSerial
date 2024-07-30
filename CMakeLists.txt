@@ -56,3 +56,12 @@ add_subdirectory(src)
 if(BUILD_TESTS)
     add_subdirectory(test/unit)
 endif()
+
+if (BUILD_EXAMPLE)
+add_executable(example examples/FlowControl.cpp)
+target_include_directories(example PUBLIC ${CMAKE_PREFIX_PATH}/include)
+target_link_directories(example PUBLIC ${CMAKE_PREFIX_PATH}/lib)
+target_link_libraries(example CppLinuxSerial)
+install(TARGETS example DESTINATION bin)
+endif (BUILD_EXAMPLE)
+
